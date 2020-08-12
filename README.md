@@ -21,7 +21,7 @@ npm i
 npm run server:all
 ```
 
-The `server:all` command is a convenience methods that runs three other commands concurrently. You can run each command separately if you need to. 
+The `serve:all` command is a convenience methods that runs three other commands concurrently. You can run each command separately if you need to. 
 
 ```
 "serve:web": "ng serve --open",
