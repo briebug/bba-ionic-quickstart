@@ -25,7 +25,10 @@
               "apps/dashboard/src/favicon.ico",
               "apps/dashboard/src/assets"
             ],
-            "styles": ["apps/dashboard/src/styles.scss"],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "apps/dashboard/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -84,7 +87,10 @@
               "apps/dashboard/tsconfig.app.json",
               "apps/dashboard/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/dashboard/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/dashboard/**/*"
+            ]
           }
         },
         "test": {
@@ -119,8 +125,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/dashboard-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/dashboard-e2e/**/*"]
+            "tsConfig": [
+              "apps/dashboard-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/dashboard-e2e/**/*"
+            ]
           }
         }
       }
@@ -138,7 +149,9 @@
             "outputPath": "dist/apps/api",
             "main": "apps/api/src/main.ts",
             "tsConfig": "apps/api/tsconfig.app.json",
-            "assets": ["apps/api/src/assets"]
+            "assets": [
+              "apps/api/src/assets"
+            ]
           },
           "configurations": {
             "production": {
@@ -167,7 +180,10 @@
               "apps/api/tsconfig.app.json",
               "apps/api/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/api/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/api/**/*"
+            ]
           }
         },
         "test": {
@@ -193,7 +209,10 @@
               "libs/api-interfaces/tsconfig.lib.json",
               "libs/api-interfaces/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/api-interfaces/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/api-interfaces/**/*"
+            ]
           }
         },
         "test": {
@@ -202,6 +221,373 @@
             "jestConfig": "libs/api-interfaces/jest.config.js",
             "tsConfig": "libs/api-interfaces/tsconfig.spec.json",
             "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "core-data": {
+      "projectType": "library",
+      "root": "libs/core-data",
+      "sourceRoot": "libs/core-data/src",
+      "prefix": "bba",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/core-data/tsconfig.lib.json",
+              "libs/core-data/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/core-data/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/core-data/jest.config.js",
+            "tsConfig": "libs/core-data/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/core-data/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "core-state": {
+      "projectType": "library",
+      "root": "libs/core-state",
+      "sourceRoot": "libs/core-state/src",
+      "prefix": "bba",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/core-state/tsconfig.lib.json",
+              "libs/core-state/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/core-state/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/core-state/jest.config.js",
+            "tsConfig": "libs/core-state/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/core-state/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "material": {
+      "projectType": "library",
+      "root": "libs/material",
+      "sourceRoot": "libs/material/src",
+      "prefix": "bba",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/material/tsconfig.lib.json",
+              "libs/material/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/material/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/material/jest.config.js",
+            "tsConfig": "libs/material/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/material/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "ui-login": {
+      "projectType": "library",
+      "root": "libs/ui-login",
+      "sourceRoot": "libs/ui-login/src",
+      "prefix": "bba",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ui-login/tsconfig.lib.json",
+              "libs/ui-login/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/ui-login/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ui-login/jest.config.js",
+            "tsConfig": "libs/ui-login/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/ui-login/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "ui-toolbar": {
+      "projectType": "library",
+      "root": "libs/ui-toolbar",
+      "sourceRoot": "libs/ui-toolbar/src",
+      "prefix": "bba",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ui-toolbar/tsconfig.lib.json",
+              "libs/ui-toolbar/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/ui-toolbar/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ui-toolbar/jest.config.js",
+            "tsConfig": "libs/ui-toolbar/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/ui-toolbar/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "mobile": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/mobile",
+      "sourceRoot": "apps/mobile/src",
+      "prefix": "bba",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/mobile",
+            "index": "apps/mobile/src/index.html",
+            "main": "apps/mobile/src/main.ts",
+            "polyfills": "apps/mobile/src/polyfills.ts",
+            "tsConfig": "apps/mobile/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/mobile/src/favicon.ico",
+              "apps/mobile/src/assets",
+              {
+                "glob": "**/*.svg",
+                "input": "node_modules/ionicons/dist/ionicons/svg",
+                "output": "./svg"
+              }
+            ],
+            "styles": [
+              "apps/mobile/src/styles.scss",
+              {
+                "input": "node_modules/@ionic/angular/css/normalize.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/structure.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/typography.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/core.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/padding.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/float-elements.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/text-alignment.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/text-transformation.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/flex-utils.css"
+              },
+              {
+                "input": "apps/mobile/src/theme/variables.scss"
+              }
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/mobile/src/environments/environment.ts",
+                  "with": "apps/mobile/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "mobile:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "mobile:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "mobile:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/mobile/tsconfig.app.json",
+              "apps/mobile/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/mobile/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/mobile/jest.config.js",
+            "tsConfig": "apps/mobile/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "apps/mobile/src/test-setup.ts"
+          }
+        },
+        "ionic-cordova-serve": {
+          "builder": "@ionic/angular-toolkit:cordova-serve",
+          "options": {
+            "cordovaBuildTarget": "mobile:ionic-cordova-build",
+            "devServerTarget": "mobile:serve"
+          },
+          "configurations": {
+            "production": {
+              "cordovaBuildTarget": "mobile:ionic-cordova-build:production",
+              "devServerTarget": "mobile:serve:production"
+            }
+          }
+        },
+        "ionic-cordova-build": {
+          "builder": "@ionic/angular-toolkit:cordova-build",
+          "options": {
+            "browserTarget": "mobile:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "mobile:build:production"
+            }
+          }
+        }
+      }
+    },
+    "mobile-e2e": {
+      "root": "apps/mobile-e2e",
+      "sourceRoot": "apps/mobile-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/mobile-e2e/cypress.json",
+            "tsConfig": "apps/mobile-e2e/tsconfig.e2e.json",
+            "devServerTarget": "mobile:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "mobile:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/mobile-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/mobile-e2e/**/*"
+            ]
           }
         }
       }

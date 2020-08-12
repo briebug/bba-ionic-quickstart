@@ -1,0 +1,18 @@
+<div class="component-container">
+  <div class="list-component">
+    <bba-authors-list
+      [authors]="authors$ | async"
+      (selected)="selectAuthor($event)"
+      (deleted)="deleteAuthor($event)"
+    >
+    </bba-authors-list>
+  </div>
+  <div class="details-component">
+    <bba-author-details
+      [author]="selectedAuthor$ | async"
+      (saved)="saveAuthor($event)"
+      (cancelled)="reset()"
+    >
+    </bba-author-details>
+  </div>
+</div>

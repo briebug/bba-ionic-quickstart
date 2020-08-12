@@ -1,0 +1,129 @@
+<mat-card>
+  <mat-card-title>
+    <span *ngIf="currentUser.id; else elseBlock">
+      {{ originalTitle | titlecase }}
+    </span>
+    <ng-template #elseBlock>
+      Select User
+    </ng-template>
+  </mat-card-title>
+  <form #form="ngForm" (submit)="saved.emit(currentUser)">
+    <mat-card-content>
+      <mat-form-field class="full-width">
+        <input
+          matInput
+          placeholder="Enter a first name"
+          [(ngModel)]="currentUser.firstName"
+          type="input"
+          name="firstName"
+          required="true"
+        />
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input
+          matInput
+          placeholder="Enter a last name"
+          [(ngModel)]="currentUser.lastName"
+          type="input"
+          name="lastName"
+          required="true"
+        />
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input
+          matInput
+          placeholder="Enter a title"
+          [(ngModel)]="currentUser.title"
+          type="input"
+          name="title"
+          required="true"
+        />
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <textarea
+          matInput
+          placeholder="Enter a description"
+          [(ngModel)]="currentUser.description"
+          type="text"
+          name="description"
+          required="false"
+        ></textarea>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input
+          matInput
+          placeholder="Enter an email address"
+          [(ngModel)]="currentUser.email"
+          type="input"
+          name="email"
+          required="true"
+        />
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input
+          matInput
+          placeholder="Enter a new password"
+          [(ngModel)]="currentUser.password"
+          type="password"
+          name="password"
+          required="true"
+        />
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input
+          matInput
+          placeholder="Enter a profile pic"
+          [(ngModel)]="currentUser.profilePic"
+          type="input"
+          name="profilePic"
+          required="true"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Select Current Lesson</mat-label>
+        <mat-select
+          [(ngModel)]="currentUser.currentLessonId"
+          required="false"
+          name="currentLessonId"
+        >
+          <mat-option *ngFor="let lesson of lessons" [value]="lesson.id">
+            {{ lesson.title }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input
+          matInput
+          placeholder="Enter the number of courses completed"
+          [(ngModel)]="currentUser.coursesCompleted"
+          type="number"
+          name="coursesCompleted"
+          required="false"
+        />
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input
+          matInput
+          placeholder="Enter the number of lesson completed"
+          [(ngModel)]="currentUser.lessonsCompleted"
+          type="number"
+          name="lessonsCompleted"
+          required="false"
+        />
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        [disabled]="form.invalid"
+        type="submit"
+        mat-button
+        color="primary"
+      >
+        Save
+      </button>
+      <button type="button" mat-button (click)="cancelled.emit()">
+        Cancel
+      </button>
+    </mat-card-actions>
+  </form>
+</mat-card>

@@ -1,0 +1,20 @@
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+
+import { Author, Course } from '@bba/api-interfaces';
+
+@Component({
+  selector: 'bba-course-details',
+  templateUrl: './course-details.component.html',
+  styleUrls: ['./course-details.component.scss'],
+})
+export class CourseDetailsComponent {
+  currentCourse: Course;
+  originalTitle = '';
+  @Input() authors: Author[];
+  @Input() set course(value: Course) {
+    if (value) this.originalTitle = value.title;
+    this.currentCourse = Object.assign({}, value);
+  }
+  @Output() saved = new EventEmitter();
+  @Output() cancelled = new EventEmitter();
+}

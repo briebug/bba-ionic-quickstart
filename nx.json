@@ -34,6 +34,28 @@
     },
     "api-interfaces": {
       "tags": []
+    },
+    "core-data": {
+      "tags": []
+    },
+    "core-state": {
+      "tags": []
+    },
+    "material": {
+      "tags": []
+    },
+    "ui-login": {
+      "tags": []
+    },
+    "ui-toolbar": {
+      "tags": []
+    },
+    "mobile": {
+      "tags": []
+    },
+    "mobile-e2e": {
+      "tags": [],
+      "implicitDependencies": ["mobile"]
     }
   }
 }

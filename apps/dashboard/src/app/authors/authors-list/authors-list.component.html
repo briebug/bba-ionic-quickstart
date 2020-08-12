@@ -1,0 +1,23 @@
+<mat-card>
+  <mat-card-content>
+    <mat-card-title>
+      Authors
+    </mat-card-title>
+    <mat-list>
+      <mat-list-item
+        *ngFor="let author of authors"
+        class="mat-list-option"
+        (click)="selected.emit(author)">
+        <span matLine>{{ author.firstName }} {{ author.lastName }}</span>
+        <button
+          *ngIf="!readonly"
+          mat-icon-button
+          type="button"
+          color="warn"
+          (click)="deleted.emit(author); $event.stopImmediatePropagation()">
+          <mat-icon>clear</mat-icon>
+        </button>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
