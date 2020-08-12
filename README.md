@@ -1,98 +1,41 @@
-# BbaIonicQuickstart
+# Ionic Quickstart
 
-This project was generated using [Nx](https://nx.dev).
+This is the sample project for the Ionic Quickstart course from BrieBug Academy. 
 
-<p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
+The sample project includes an Ionic application, Angular web application, and a mock RESTful API  within an Nx workspace by NRWL. The Ionic and Angular applications use the same state and data libs to manage state and handle server communication. The state lib is built around NgRx and both appliations are entirely reactive. 
 
-🔎 **Nx is a set of Extensible Dev Tools for Monorepos.**
+<p align="center"><img src="apps/mobile/src/assets/screenshots/bba-ionic-screenshot.png" alt="Ionic Quickstart"/></p>
 
-## Quick Start & Documentation
+## Prerequisites
 
-[Nx Documentation](https://nx.dev/angular)
+## Prerequisites
+- [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+- Node.js and NPM – we recommend using [NVM (Linux/Mac)](https://github.com/creationix/nvm) or [NVM-Windows (Windows)](https://github.com/coreybutler/nvm-windows)
+- Install Angular CLI via `npm i -g @angular/cli`
+- Install Ionic CLI va `npm i -g @ionic/cli`
 
-[10-minute video showing all Nx features](https://nx.dev/angular/getting-started/what-is-nx)
+## Getting Started
 
-[Interactive Tutorial](https://nx.dev/angular/tutorial/01-create-application)
+```
+git clone https://github.com/briebug/bba-ionic-quickstart.git
+cd bba-ionic-quickstart
+npm i
+npm run server:all
+```
 
-## Adding capabilities to your workspace
+The `server:all` command is a convenience methods that runs three other commands concurrently. You can run each command separately if you need to. 
 
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
+```
+"serve:web": "ng serve --open",
+"serve:mobile": "ionic serve --project=mobile",
+"serve:api": "json-server server/db.json",
+"serve:all": "concurrently \"npm run serve:api\" \"npm run serve:web\" \"npm run serve:mobile\""
+```
 
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
+Then web application will open to [http://localhost:4200](http://localhost:4200) in your browser.
 
-Below are our core plugins:
+Then mobile application will open to [http://localhost:8100](http://localhost:8100) in your browser.
 
-- [Angular](https://angular.io)
-  - `ng add @nrwl/angular`
-- [React](https://reactjs.org)
-  - `ng add @nrwl/react`
-- Web (no framework frontends)
-  - `ng add @nrwl/web`
-- [Nest](https://nestjs.com)
-  - `ng add @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `ng add @nrwl/express`
-- [Node](https://nodejs.org)
-  - `ng add @nrwl/node`
+You can see the API by navigating to [http://localhost:3000](http://localhost:3000) in your browser.
 
-There are also many [community plugins](https://nx.dev/nx-community) you could add.
-
-## Generate an application
-
-Run `ng g @nrwl/angular:app my-app` to generate an application.
-
-> You can use any of the plugins above to generate applications as well.
-
-When using Nx, you can create multiple applications and libraries in the same workspace.
-
-## Generate a library
-
-Run `ng g @nrwl/angular:lib my-lib` to generate a library.
-
-> You can also use any of the plugins above to generate libraries as well.
-
-Libraries are sharable across libraries and applications. They can be imported from `@bba-ionic-quickstart/mylib`.
-
-## Development server
-
-Run `ng serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng g component my-component --project=my-app` to generate a new component.
-
-## Build
-
-Run `ng build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test my-app` to execute the unit tests via [Jest](https://jestjs.io).
-
-Run `nx affected:test` to execute the unit tests affected by a change.
-
-## Running end-to-end tests
-
-Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
-
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
-
-## Understand your workspace
-
-Run `nx dep-graph` to see a diagram of the dependencies of your projects.
-
-## Further help
-
-Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
-
-## ☁ Nx Cloud
-
-### Computation Memoization in the Cloud
-
-<p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
-
-Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
-
-Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
-
-Visit [Nx Cloud](https://nx.app/) to learn more.
+> Note: the above terminal commands are for Mac. Remember to substitute the appropriate commands for your OS.
