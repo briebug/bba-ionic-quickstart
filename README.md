@@ -18,7 +18,7 @@ The sample project includes an Ionic application, Angular web application, and a
 git clone https://github.com/briebug/bba-ionic-quickstart.git
 cd bba-ionic-quickstart
 npm i
-npm run server:all
+npm run serve:all
 ```
 
 The `serve:all` command is a convenience methods that runs three other commands concurrently. You can run each command separately if you need to. 
@@ -30,9 +30,9 @@ The `serve:all` command is a convenience methods that runs three other commands 
 "serve:all": "concurrently \"npm run serve:api\" \"npm run serve:web\" \"npm run serve:mobile\""
 ```
 
-Then web application will open to [http://localhost:4200](http://localhost:4200) in your browser.
+The web application will open to [http://localhost:4200](http://localhost:4200) in your browser.
 
-Then mobile application will open to [http://localhost:8100](http://localhost:8100) in your browser.
+The mobile application will open to [http://localhost:8100](http://localhost:8100) in your browser.
 
 You can see the API by navigating to [http://localhost:3000](http://localhost:3000) in your browser.
 
