@@ -7,8 +7,6 @@ The sample project includes an Ionic application, Angular web application, and a
 <p align="center"><img src="apps/mobile/src/assets/screenshots/bba-ionic-screenshot.png" alt="Ionic Quickstart"/></p>
 
 ## Prerequisites
-
-## Prerequisites
 - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 - Node.js and NPM – we recommend using [NVM (Linux/Mac)](https://github.com/creationix/nvm) or [NVM-Windows (Windows)](https://github.com/coreybutler/nvm-windows)
 - Install Angular CLI via `npm i -g @angular/cli`
