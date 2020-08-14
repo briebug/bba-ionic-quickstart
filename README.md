@@ -12,7 +12,7 @@ The sample project includes an Ionic application, Angular web application, and a
 - Install Angular CLI via `npm i -g @angular/cli`
 - Install Ionic CLI va `npm i -g @ionic/cli`
 
-## Getting Started
+## Web: Getting Started
 
 ```
 git clone https://github.com/briebug/bba-ionic-quickstart.git
@@ -37,3 +37,17 @@ The mobile application will open to [http://localhost:8100](http://localhost:810
 You can see the API by navigating to [http://localhost:3000](http://localhost:3000) in your browser.
 
 > Note: the above terminal commands are for Mac. Remember to substitute the appropriate commands for your OS.
+
+## Mobile: Getting Started
+
+Running Ionic applications in a browser is a great place to start but ultimately they are meant to run on mobile devices. This is a bit more involved and so the first place to start is with the Ionic documentation developing for [iOS](https://ionicframework.com/docs/developing/ios) and [Android](https://ionicframework.com/docs/developing/android). These articles will guide you through setting up your local environment.
+
+Once you have set up Xcode and/or Android Studio, you can run these commands.
+
+```
+nx build --project=mobile
+npx cap add ios
+npx cap open ios
+npx cap add android
+npx cap open android
+```
