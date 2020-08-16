@@ -414,7 +414,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/apps/mobile",
+            "outputPath": "apps/mobile/www",
             "index": "apps/mobile/src/index.html",
             "main": "apps/mobile/src/main.ts",
             "polyfills": "apps/mobile/src/polyfills.ts",
