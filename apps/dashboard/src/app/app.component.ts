@@ -13,13 +13,13 @@ export enum SidenavStatus {
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'Application';
+  title = 'Briebug Academy Dashboard';
   links = [
     { path: '/home', icon: 'home', title: 'Home' },
-    { path: '/authors', icon: 'view_list', title: 'Authors' },
-    { path: '/courses', icon: 'view_list', title: 'Courses' },
+    { path: '/authors', icon: 'face', title: 'Authors' },
+    { path: '/courses', icon: 'view_module', title: 'Courses' },
     { path: '/lessons', icon: 'view_list', title: 'Lessons' },
-    { path: '/users', icon: 'view_list', title: 'Users' },
+    { path: '/users', icon: 'people', title: 'Users' },
   ];
 
   isAuthenticated$: Observable<boolean> = of(true);
