@@ -109,6 +109,8 @@ export const getFullUser = createSelector(
   LessonsSelectors.getAllLessons,
   UsersSelectors.getSelectedUser,
   (courses: Course[], lessons: Lesson[], user: User) => {
+    if (!user) return;
+
     const currentLesson = lessons.find(
       (lesson) => lesson.id === user.currentLessonId
     );
