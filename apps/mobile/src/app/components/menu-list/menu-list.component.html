@@ -1,9 +1,8 @@
 <ion-list id="menu-list" lines="none">
   <ion-menu-toggle auto-hide="false" *ngFor="let page of pages; let i = index">
     <ion-item
-      (click)="setSelectedPage(i)"
       [routerLink]="[page.url]"
-      [class.selected]="isSelectedPage(i)"
+      routerLinkActive="selected"
       routerDirection="root"
       lines="none"
       detail="false">
