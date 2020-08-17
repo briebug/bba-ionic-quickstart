@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from '@bba/material';
 import { CoursesListComponent } from './courses-list.component';
 
 describe('CoursesListComponent', () => {
@@ -9,6 +10,10 @@ describe('CoursesListComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [CoursesListComponent],
+      imports: [
+        MaterialModule,
+        NoopAnimationsModule,
+      ],
     }).compileComponents();
   }));
 

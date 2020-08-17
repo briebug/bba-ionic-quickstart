@@ -1,6 +1,23 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { FormsModule } from '@angular/forms';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { User } from '@bba/api-interfaces';
+import { MaterialModule } from '@bba/material';
 import { UserDetailsComponent } from './user-details.component';
+
+const mockUser: User = {
+  id: '',
+  title: '',
+  description: '',
+  firstName: '',
+  lastName: '',
+  email: '',
+  password: '',
+  profilePic: '',
+  currentLessonId: '',
+  coursesCompleted: 1,
+  lessonsCompleted: 1
+}
 
 describe('UserDetailsComponent', () => {
   let component: UserDetailsComponent;
@@ -8,13 +25,21 @@ describe('UserDetailsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [UserDetailsComponent],
+      declarations: [
+        UserDetailsComponent
+      ],
+      imports: [
+        FormsModule,
+        MaterialModule,
+        NoopAnimationsModule,
+      ],
     }).compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(UserDetailsComponent);
     component = fixture.componentInstance;
+    component.currentUser = mockUser;
     fixture.detectChanges();
   });
 

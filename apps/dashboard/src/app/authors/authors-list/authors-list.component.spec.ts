@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from '@bba/material';
 import { AuthorsListComponent } from './authors-list.component';
 
 describe('AuthorsListComponent', () => {
@@ -9,6 +10,10 @@ describe('AuthorsListComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [AuthorsListComponent],
+      imports: [
+        MaterialModule,
+        NoopAnimationsModule,
+      ],
     }).compileComponents();
   }));
 
