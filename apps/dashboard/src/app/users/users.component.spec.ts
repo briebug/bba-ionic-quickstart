@@ -40,7 +40,7 @@ describe('UsersComponent', () => {
     fixture = TestBed.createComponent(UsersComponent);
     component = fixture.componentInstance;
     de = fixture.debugElement;
-    usersFacade = de.injector.get(UsersFacade);
+    usersFacade = TestBed.inject(UsersFacade);
     fixture.detectChanges();
   });
 

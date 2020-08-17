@@ -44,7 +44,7 @@ describe('CoursesComponent', () => {
     fixture = TestBed.createComponent(CoursesComponent);
     component = fixture.componentInstance;
     de = fixture.debugElement;
-    coursesFacade = de.injector.get(CoursesFacade);
+    coursesFacade = TestBed.inject(CoursesFacade);
     fixture.detectChanges();
   });
 
