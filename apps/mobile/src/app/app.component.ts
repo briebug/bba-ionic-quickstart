@@ -1,22 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-
-import { Platform } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { Component } from '@angular/core';
 import {
   AuthorsFacade,
   CoursesFacade,
   LessonsFacade,
-  UsersFacade,
+  UsersFacade
 } from '@bba/core-state';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'bba-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
-export class AppComponent implements OnInit {
-  public selectedIndex = 0;
+export class AppComponent {
   public dark = false;
   public pages = [
     {
@@ -68,22 +66,5 @@ export class AppComponent implements OnInit {
     this.usersFacade.loadUsers();
     // For demonstration purposes only...
     this.usersFacade.login('Cole', 'Sanders');
-  }
-
-  ngOnInit() {
-    this.getSelectedPageIndex();
-  }
-
-  getSelectedPageIndex() {
-    const path = window.location.pathname.split('/')[1];
-    if (path !== undefined) {
-      this.selectedIndex = this.pages.findIndex(
-        (page) => page.title.toLowerCase() === path.toLowerCase()
-      );
-    }
-  }
-
-  setSelectedPage(index) {
-    this.selectedIndex = index;
   }
 }

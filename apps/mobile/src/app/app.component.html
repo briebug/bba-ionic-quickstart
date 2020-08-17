@@ -2,35 +2,8 @@
   <ion-split-pane contentId="main-content">
     <ion-menu contentId="main-content" type="overlay" lines="none">
       <ion-content>
-        <ion-item detail="false" lines="none" class="course-item">
-          <img slot="start" class="logo" src="assets/images/briebug-chevron.svg" alt="Briebug Academy Logo">
-          <ion-label>
-            <h1>Briebug Academy</h1>
-            <p>Better Software Better Lives</p>
-          </ion-label>
-        </ion-item>
-
-        <ion-list id="menu-list" lines="none">
-          <ion-menu-toggle auto-hide="false" *ngFor="let page of pages; let i = index">
-            <ion-item
-              (click)="setSelectedPage(i)"
-              [routerLink]="[page.url]"
-              [class.selected]="selectedIndex == i"
-              routerDirection="root"
-              lines="none"
-              detail="false">
-              <ion-icon slot="start" [ios]="page.icon + '-outline'" [md]="page.icon + '-sharp'"></ion-icon>
-              <ion-label>{{ page.title }}</ion-label>
-            </ion-item>
-          </ion-menu-toggle>
-          <ion-item>
-            <ion-icon slot="start" name="moon-outline"></ion-icon>
-            <ion-label>
-              Dark Mode
-            </ion-label>
-            <ion-toggle [(ngModel)]="dark"></ion-toggle>
-          </ion-item>
-        </ion-list>
+        <bba-menu-header></bba-menu-header>
+        <bba-menu-list [(dark)]="dark" [pages]="pages"></bba-menu-list>
       </ion-content>
     </ion-menu>
 
