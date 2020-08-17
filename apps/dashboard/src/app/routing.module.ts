@@ -14,7 +14,6 @@ const routes: Routes = [
   { path: 'courses', component: CoursesComponent },
   { path: 'lessons', component: LessonsComponent },
   { path: 'users', component: UsersComponent },
-
   { path: '**', redirectTo: '/' },
 ];
 

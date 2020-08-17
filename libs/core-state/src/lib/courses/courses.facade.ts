@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { Course } from '@bba/api-interfaces';
 import { Action, ActionsSubject, select, Store } from '@ngrx/store';
 import { filter } from 'rxjs/operators';
-import { getFullCourses } from '..';
+
+import { getNavigatedCourse, getFullCourses } from '..';
 import * as CoursesActions from './courses.actions';
 import * as fromCourses from './courses.reducer';
 import * as CoursesSelectors from './courses.selectors';
@@ -14,6 +15,7 @@ export class CoursesFacade {
   loaded$ = this.store.pipe(select(CoursesSelectors.getCoursesLoaded));
   allCourses$ = this.store.pipe(select(getFullCourses));
   selectedCourse$ = this.store.pipe(select(CoursesSelectors.getSelectedCourse));
+  navigatedCourse$ = this.store.pipe(select(getNavigatedCourse));
 
   mutations$ = this.actions$.pipe(
     filter(

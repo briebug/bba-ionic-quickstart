@@ -1,10 +1,10 @@
-import { Params } from '@angular/router';
+import { Author, Course, Lesson, User } from '@bba/api-interfaces';
 import * as fromRouter from '@ngrx/router-store';
+import { routerReducer } from '@ngrx/router-store';
 import {
-  ActionReducer,
   ActionReducerMap,
-  createSelector,
-  MetaReducer,
+  createFeatureSelector,
+  createSelector
 } from '@ngrx/store';
 
 import * as fromAuthors from './authors/authors.reducer';
@@ -17,20 +17,17 @@ import * as CoursesSelectors from './courses/courses.selectors';
 import * as LessonsSelectors from './lessons/lessons.selectors';
 import * as UsersSelectors from './users/users.selectors';
 
-import { Author, Course, Lesson, User } from '@bba/api-interfaces';
+// -------------------------------------------------------------------
+// Core State and Reducers
+// -------------------------------------------------------------------
+export const ROUTER_FEATURE_KEY = 'router';
 
-export interface RouterStateUrl {
-  url: string;
-  queryParams: Params;
-  params: Params;
+export interface RouterState {
+  router: fromRouter.RouterReducerState<any>;
 }
 
-// ---------------------------------------
-// Core State and Reducers
-// ---------------------------------------
-
 export interface AppState {
-  router: fromRouter.RouterReducerState<RouterStateUrl>;
+  [ROUTER_FEATURE_KEY]: fromRouter.RouterReducerState<any>;
   [fromAuthors.AUTHORS_FEATURE_KEY]: fromAuthors.AuthorsState;
   [fromCourses.COURSES_FEATURE_KEY]: fromCourses.CoursesState;
   [fromLessons.LESSONS_FEATURE_KEY]: fromLessons.LessonsState;
@@ -38,16 +35,16 @@ export interface AppState {
 }
 
 export const reducers: ActionReducerMap<AppState> = {
-  router: fromRouter.routerReducer,
+  [ROUTER_FEATURE_KEY]: routerReducer,
   [fromAuthors.AUTHORS_FEATURE_KEY]: fromAuthors.authorsReducer,
   [fromCourses.COURSES_FEATURE_KEY]: fromCourses.coursesReducer,
   [fromLessons.LESSONS_FEATURE_KEY]: fromLessons.lessonsReducer,
   [fromUsers.USERS_FEATURE_KEY]: fromUsers.usersReducer,
 };
 
-// ---------------------------------------
+// -------------------------------------------------------------------
 // Common Selectors
-// ---------------------------------------
+// -------------------------------------------------------------------
 export const getFullCourses = createSelector(
   AuthorsSelectors.getAllAuthors,
   CoursesSelectors.getAllCourses,
@@ -124,4 +121,31 @@ export const getFullUser = createSelector(
       currentLesson,
     });
   }
+);
+
+// -------------------------------------------------------------------
+// Router Selectors
+// -------------------------------------------------------------------
+export const getRouterState = createFeatureSelector<
+  RouterState,
+  fromRouter.RouterReducerState<any>
+>(ROUTER_FEATURE_KEY);
+
+export const {
+  selectRouteParam
+} = fromRouter.getSelectors(getRouterState);
+
+export const navigatedCourseId = selectRouteParam('courseId');
+export const navigatedLessonId = selectRouteParam('lessonId');
+
+export const getNavigatedCourse = createSelector(
+  getFullCourses,
+  navigatedCourseId,
+  (courses, courseId) => courses.find(course => course.id === courseId)
+);
+
+export const getNavigatedLesson = createSelector(
+  LessonsSelectors.getLessonsEntities,
+  navigatedLessonId,
+  (lessons, lessonId) => lessons[lessonId]
 );

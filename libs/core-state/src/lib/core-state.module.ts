@@ -4,7 +4,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { RootStoreConfig, StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { reducers } from '.';
+import { reducers, ROUTER_FEATURE_KEY } from '.';
 import { AuthorsEffects } from './authors/authors.effects';
 import { CoursesEffects } from './courses/courses.effects';
 import { LessonsEffects } from './lessons/lessons.effects';
@@ -31,7 +31,7 @@ const storeConfig: RootStoreConfig<any> = {
       UsersEffects,
     ]),
     StoreDevtoolsModule.instrument({ maxAge: 25, name: STORE_NAME }),
-    StoreRouterConnectingModule.forRoot({ stateKey: 'router' }),
+    StoreRouterConnectingModule.forRoot({ stateKey: ROUTER_FEATURE_KEY }),
   ],
 })
 export class CoreStateModule {}
