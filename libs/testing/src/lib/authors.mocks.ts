@@ -9,6 +9,15 @@ export const mockAuthorsFacade = {
   createAuthor: () => {},
   mutations$: of(true),
 };
+
+export const mockAuthorsService = {
+  all: () => of([]),
+  find: () => of({...mockAuthor}),
+  create: () => of ({...mockAuthor}),
+  update: () => of({...mockAuthor}),
+  delete: () => of({...mockAuthor}),
+}
+
 export const mockAuthor: Author = {
   id: '0',
   title: 'mockAuthor',

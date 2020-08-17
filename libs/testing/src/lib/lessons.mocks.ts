@@ -9,6 +9,15 @@ export const mockLessonsFacade = {
   createLesson: () => {},
   mutations$: of(true),
 };
+
+export const mockLessonsService = {
+  all: () => of([]),
+  find: () => of({...mockLesson}),
+  create: () => of ({...mockLesson}),
+  update: () => of({...mockLesson}),
+  delete: () => of({...mockLesson}),
+}
+
 export const mockLesson: Lesson = {
   id: '0',
   title: 'mockLesson',

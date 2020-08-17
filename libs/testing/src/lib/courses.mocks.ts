@@ -9,6 +9,15 @@ export const mockCoursesFacade = {
   createCourse: () => {},
   mutations$: of(true),
 };
+
+export const mockCoursesService = {
+  all: () => of([]),
+  find: () => of({...mockCourse}),
+  create: () => of ({...mockCourse}),
+  update: () => of({...mockCourse}),
+  delete: () => of({...mockCourse}),
+}
+
 export const mockCourse: Course = {
   id: '0',
   title: 'mockCourse',
