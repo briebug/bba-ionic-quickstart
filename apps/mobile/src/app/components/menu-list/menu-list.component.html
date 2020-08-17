@@ -3,7 +3,7 @@
     <ion-item
       (click)="setSelectedPage(i)"
       [routerLink]="[page.url]"
-      [class.selected]="selectedIndex == i"
+      [class.selected]="isSelectedPage(i)"
       routerDirection="root"
       lines="none"
       detail="false">

@@ -28,4 +28,8 @@ export class MenuListComponent implements OnInit {
   setSelectedPage(index) {
     this.selectedIndex = index;
   }
+
+  isSelectedPage(index) {
+    return this.selectedIndex === index;
+  }
 }
