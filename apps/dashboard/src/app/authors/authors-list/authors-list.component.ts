@@ -1,5 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Author } from '@bba/api-interfaces';
 
 @Component({
