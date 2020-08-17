@@ -9,6 +9,15 @@ export const mockUsersFacade = {
   createUser: () => {},
   mutations$: of(true),
 };
+
+export const mockUsersService = {
+  all: () => of([]),
+  find: () => of({...mockUser}),
+  create: () => of ({...mockUser}),
+  update: () => of({...mockUser}),
+  delete: () => of({...mockUser}),
+}
+
 export const mockUser: User = {
   id: '0',
   title: 'mockUser',
