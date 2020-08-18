@@ -30,7 +30,7 @@ describe('AppComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(AppComponent);
     de = fixture.debugElement;
-    component = de.componentInstance;
+    component = fixture.componentInstance;
   });
 
   it('should create the app', () => {
@@ -38,25 +38,24 @@ describe('AppComponent', () => {
   });
 
   it('should call logout on toolbar event-logout', () => {
-    const spy = jest.spyOn(component, 'logout')
+    const spy = jest.spyOn(component, 'logout');
 
-    const toolbar = de.query(By.css('bba-toolbar'))
+    const toolbar = de.query(By.css('bba-toolbar'));
     toolbar.triggerEventHandler('logout', null);
 
     expect(spy).toHaveBeenCalled();
-  })
+  });
 
   describe('should toggle sidenavStatus on toolbar event-toggleSidenav', () => {
-
     it('to closed, assumed open on init', () => {
-      const spy = jest.spyOn(component, 'toggleSidenav')
-      const toolbar = de.query(By.css('bba-toolbar'))
+      const spy = jest.spyOn(component, 'toggleSidenav');
+      const toolbar = de.query(By.css('bba-toolbar'));
 
       toolbar.triggerEventHandler('toggleSidenav', null);
 
       expect(spy).toHaveBeenCalled();
       expect(component.sidenavStatus).toBe(SidenavStatus.CLOSED);
-    })
+    });
 
     it('to open, set to closed on start', () => {
       const spy = jest.spyOn(component, 'toggleSidenav');
@@ -65,9 +64,9 @@ describe('AppComponent', () => {
       component.sidenavStatus = SidenavStatus.CLOSED;
 
       toolbar.triggerEventHandler('toggleSidenav', null);
-      
+
       expect(spy).toHaveBeenCalled();
       expect(component.sidenavStatus).toBe(SidenavStatus.OPENED);
-    })
-  })
+    });
+  });
 });
