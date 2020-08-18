@@ -1,14 +1,14 @@
-import { TestBed } from '@angular/core/testing';
-import { ActionsSubject } from '@ngrx/store';
+import { TestBed } from "@angular/core/testing";
+import { ActionsSubject } from "@ngrx/store";
 
-import { UsersFacade } from './users.facade';
-import * as UsersActions from './users.actions';
-import { initialUsersState } from './users.reducer';
-import { mockUser } from '@bba/testing';
-import { MockStore, provideMockStore } from '@ngrx/store/testing';
+import { UsersFacade } from "./users.facade";
+import * as UsersActions from "./users.actions";
+import { initialUsersState } from "./users.reducer";
+import { mockUser } from "@bba/testing";
+import { MockStore, provideMockStore } from "@ngrx/store/testing";
 import { of } from 'rxjs';
 
-describe('UsersFacade', () => {
+describe("UsersFacade", () => {
   let facade: UsersFacade;
   let actionSubject;
   const mockActionsSubject = new ActionsSubject();
@@ -28,29 +28,18 @@ describe('UsersFacade', () => {
     store = TestBed.inject(MockStore);
   });
 
-  it('should be created', () => {
+  it("should be created", () => {
     expect(facade).toBeTruthy();
   });
 
-  it('should have no mutations', () => {
-    let result;
-    facade.mutations$.subscribe((ret) => {
-      result = ret;
-    });
-
-    expect(result).toBe(undefined);
-  });
-
-  it('should have mutations', () => {
+  it("should have mutations", (done) => {
     const action = UsersActions.createUser({ user: mockUser });
     actionSubject.next(action);
 
-    let result;
-    facade.mutations$.subscribe((ret) => {
-      result = ret;
+    facade.mutations$.subscribe((result) => {
+      expect(result).toBe(action);
+      done();
     });
-
-    expect(result).toBe(action);
   });
 
   it('should login the correct user', () => {
@@ -71,9 +60,9 @@ describe('UsersFacade', () => {
     expect(spy).toBeCalledTimes(0);
   });
 
-  describe('should dispatch', () => {
-    it('select on select(user.id)', () => {
-      const spy = jest.spyOn(store, 'dispatch');
+  describe("should dispatch", () => {
+    it("select on select(user.id)", () => {
+      const spy = jest.spyOn(store, "dispatch");
 
       facade.selectUser(mockUser.id);
 
@@ -82,8 +71,8 @@ describe('UsersFacade', () => {
       expect(spy).toHaveBeenCalledWith(action);
     });
 
-    it('loadUsers on loadUsers()', () => {
-      const spy = jest.spyOn(store, 'dispatch');
+    it("loadUsers on loadUsers()", () => {
+      const spy = jest.spyOn(store, "dispatch");
 
       facade.loadUsers();
 
@@ -92,8 +81,8 @@ describe('UsersFacade', () => {
       expect(spy).toHaveBeenCalledWith(action);
     });
 
-    it('loadUser on loadUser(user.id)', () => {
-      const spy = jest.spyOn(store, 'dispatch');
+    it("loadUser on loadUser(user.id)", () => {
+      const spy = jest.spyOn(store, "dispatch");
 
       facade.loadUser(mockUser.id);
 
@@ -102,8 +91,8 @@ describe('UsersFacade', () => {
       expect(spy).toHaveBeenCalledWith(action);
     });
 
-    it('createUser on createUser(user)', () => {
-      const spy = jest.spyOn(store, 'dispatch');
+    it("createUser on createUser(user)", () => {
+      const spy = jest.spyOn(store, "dispatch");
 
       facade.createUser(mockUser);
 
@@ -112,8 +101,8 @@ describe('UsersFacade', () => {
       expect(spy).toHaveBeenCalledWith(action);
     });
 
-    it('updateUser on updateUser(user)', () => {
-      const spy = jest.spyOn(store, 'dispatch');
+    it("updateUser on updateUser(user)", () => {
+      const spy = jest.spyOn(store, "dispatch");
 
       facade.updateUser(mockUser);
 
@@ -122,8 +111,8 @@ describe('UsersFacade', () => {
       expect(spy).toHaveBeenCalledWith(action);
     });
 
-    it('delete on delete(model)', () => {
-      const spy = jest.spyOn(store, 'dispatch');
+    it("delete on delete(model)", () => {
+      const spy = jest.spyOn(store, "dispatch");
 
       facade.deleteUser(mockUser);
 

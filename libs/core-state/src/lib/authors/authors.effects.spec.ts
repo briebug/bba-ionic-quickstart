@@ -1,17 +1,16 @@
 import { TestBed } from '@angular/core/testing';
-
-import { Observable } from 'rxjs';
-
 import { provideMockActions } from '@ngrx/effects/testing';
-import { provideMockStore } from '@ngrx/store/testing';
-
 import { NxModule, DataPersistence } from '@nrwl/angular';
 import { hot, cold } from '@nrwl/angular/testing';
+
+import { Observable } from 'rxjs';
 
 import { AuthorsEffects } from './authors.effects';
 import * as AuthorsActions from './authors.actions';
 import { AuthorsService } from '@bba/core-data';
+
 import { mockAuthorsService, mockAuthor } from '@bba/testing';
+import { Author } from '@bba/api-interfaces';
 
 describe('AuthorsEffects', () => {
   let actions: Observable<any>;
@@ -25,7 +24,6 @@ describe('AuthorsEffects', () => {
         AuthorsEffects,
         DataPersistence,
         provideMockActions(() => actions),
-        provideMockStore(),
         { provide: AuthorsService, useValue: mockAuthorsService },
       ],
     });
@@ -39,133 +37,146 @@ describe('AuthorsEffects', () => {
   });
 
   describe('loadAuthors$', () => {
-    it('should work', () => {
-      actions = hot('-a-|', { a: AuthorsActions.loadAuthors() });
+    it('should return loadAuthorsSuccess, on success', () => {
+      const authors: Author[] = [];
+      const action = AuthorsActions.loadAuthors();
+      const outcome = AuthorsActions.loadAuthorsSuccess({ authors });
 
-      const expected = hot('-a-|', {
-        a: AuthorsActions.loadAuthorsSuccess({ authors: [] }),
-      });
+      actions = hot('-a', { a: action });
+      const response = cold('-a|', { a: authors });
+      const expected = cold('--b', { b: outcome });
+      service.all = jest.fn(() => response);
 
       expect(effects.loadAuthors$).toBeObservable(expected);
     });
 
-    it('should not work', () => {
-      actions = hot('-a', { a: AuthorsActions.loadAuthors() });
+    it('should return loadAuthorsFailure, on failure', () => {
+      const action = AuthorsActions.loadAuthors();
+      const error = new Error();
+      const outcome = AuthorsActions.loadAuthorsFailure({ error });
 
-      const error = new Error('mockError') as any;
-      const response = cold('-#|', {}, error)
-
-      const spy = jest.spyOn(service, 'all');
-      spy.mockReturnValue(response);
-
-      const expected = cold('--b', { b: AuthorsActions.loadAuthorsFailure({ error }) });
+      actions = hot('-a', { a: action });
+      const response = cold('-#|', {}, error);
+      const expected = cold('--b', { b: outcome });
+      service.all = jest.fn(() => response);
 
       expect(effects.loadAuthors$).toBeObservable(expected);
     });
   });
 
   describe('loadAuthor$', () => {
-    it('should work', () => {
-      actions = hot('-a-|', { a: AuthorsActions.loadAuthor({ authorId: mockAuthor.id }) });
+    it('should return success with author', () => {
+      const author = { ...mockAuthor };
+      const action = AuthorsActions.loadAuthor({ authorId: author.id });
+      const outcome = AuthorsActions.loadAuthorSuccess({ author });
 
-      const expected = hot('-a-|', {
-        a: AuthorsActions.loadAuthorSuccess({ author: {...mockAuthor} }),
-      });
+      actions = hot('-a', { a: action });
+      const response = cold('-a|', { a: author });
+      const expected = cold('--b', { b: outcome });
+      service.find = jest.fn(() => response);
 
       expect(effects.loadAuthor$).toBeObservable(expected);
     });
 
-    it('should not work', () => {
-      actions = hot('-a', { a: AuthorsActions.loadAuthor({authorId: mockAuthor.id}) });
+    it('should return failure', () => {
+      const author = { ...mockAuthor };
+      const action = AuthorsActions.loadAuthor({ authorId: author.id });
+      const error = new Error();
+      const outcome = AuthorsActions.loadAuthorFailure({ error });
 
-      const error = new Error('mockError') as any;
-      const response = cold('-#|', {}, error)
-
-      const spy = jest.spyOn(service, 'find');
-      spy.mockReturnValue(response);
-
-      const expected = cold('--b', { b: AuthorsActions.loadAuthorFailure({ error }) });
+      actions = hot('-a', { a: action });
+      const response = cold('-#|', {}, error);
+      const expected = cold('--b', { b: outcome });
+      service.find = jest.fn(() => response);
 
       expect(effects.loadAuthor$).toBeObservable(expected);
     });
   });
 
   describe('createAuthor$', () => {
-    it('should work', () => {
-      actions = hot('-a-|', { a: AuthorsActions.createAuthor({ author: mockAuthor }) });
+    it('should return success with author', () => {
+      const author = { ...mockAuthor };
+      const action = AuthorsActions.createAuthor({ author });
+      const outcome = AuthorsActions.createAuthorSuccess({ author });
 
-      const expected = hot('-a-|', {
-        a: AuthorsActions.createAuthorSuccess({ author: {...mockAuthor} }),
-      });
+      actions = hot('-a', { a: action });
+      const response = cold('-a|', { a: author });
+      const expected = cold('--b', { b: outcome });
+      service.create = jest.fn(() => response);
 
       expect(effects.createAuthor$).toBeObservable(expected);
     });
 
-    it('should not work', () => {
-      actions = hot('-a', { a: AuthorsActions.createAuthor({ author: mockAuthor }) });
+    it('should return failure', () => {
+      const author = { ...mockAuthor };
+      const action = AuthorsActions.createAuthor({ author });
+      const error = new Error();
+      const outcome = AuthorsActions.createAuthorFailure({ error });
 
-      const error = new Error('mockError') as any;
-      const response = cold('-#|', {}, error)
-
-      const spy = jest.spyOn(service, 'create');
-      spy.mockReturnValue(response);
-
-      const expected = cold('--b', { b: AuthorsActions.createAuthorFailure({ error }) });
+      actions = hot('-a', { a: action });
+      const response = cold('-#|', {}, error);
+      const expected = cold('--b', { b: outcome });
+      service.create = jest.fn(() => response);
 
       expect(effects.createAuthor$).toBeObservable(expected);
     });
   });
 
   describe('updateAuthor$', () => {
-    it('should work', () => {
-      actions = hot('-a-|', { a: AuthorsActions.updateAuthor({ author: mockAuthor }) });
+    it('should return success with author', () => {
+      const author = { ...mockAuthor };
+      const action = AuthorsActions.updateAuthor({ author });
+      const outcome = AuthorsActions.updateAuthorSuccess({ author });
 
-      const expected = hot('-a-|', {
-        a: AuthorsActions.updateAuthorSuccess({ author: {...mockAuthor} }),
-      });
+      actions = hot('-a', { a: action });
+      const response = cold('-a|', { a: author });
+      const expected = cold('--b', { b: outcome });
+      service.update = jest.fn(() => response);
 
       expect(effects.updateAuthor$).toBeObservable(expected);
     });
 
-    it('should not work', () => {
-      actions = hot('-a', { a: AuthorsActions.updateAuthor({ author: mockAuthor }) });
+    it('should return failure', () => {
+      const author = { ...mockAuthor };
+      const action = AuthorsActions.updateAuthor({ author });
+      const error = new Error();
+      const outcome = AuthorsActions.updateAuthorFailure({ error });
 
-      const error = new Error('mockError') as any;
-      const response = cold('-#|', {}, error)
-
-      const spy = jest.spyOn(service, 'update');
-      spy.mockReturnValue(response);
-
-      const expected = cold('--b', { b: AuthorsActions.updateAuthorFailure({ error }) });
+      actions = hot('-a', { a: action });
+      const response = cold('-#|', {}, error);
+      const expected = cold('--b', { b: outcome });
+      service.update = jest.fn(() => response);
 
       expect(effects.updateAuthor$).toBeObservable(expected);
     });
   });
 
   describe('deleteAuthor$', () => {
-    it('should work', () => {
-      actions = hot('-a-|', { a: AuthorsActions.deleteAuthor({ author: mockAuthor }) });
+    it('should return success with author', () => {
+      const author = { ...mockAuthor };
+      const action = AuthorsActions.deleteAuthor({ author });
+      const outcome = AuthorsActions.deleteAuthorSuccess({ author });
 
-      const expected = hot('-a-|', {
-        a: AuthorsActions.deleteAuthorSuccess({ author: {...mockAuthor} }),
-      });
+      actions = hot('-a', { a: action });
+      const response = cold('-a|', { a: author });
+      const expected = cold('--b', { b: outcome });
+      service.delete = jest.fn(() => response);
 
       expect(effects.deleteAuthor$).toBeObservable(expected);
     });
 
-    it('should not work', () => {
-      actions = hot('-a', { a: AuthorsActions.deleteAuthor({ author: mockAuthor }) });
+    it('should return failure', () => {
+      const author = { ...mockAuthor };
+      const action = AuthorsActions.deleteAuthor({ author });
+      const error = new Error();
+      const outcome = AuthorsActions.deleteAuthorFailure({ error });
 
-      const error = new Error('mockError') as any;
-      const response = cold('-#|', {}, error)
-
-      const spy = jest.spyOn(service, 'delete');
-      spy.mockReturnValue(response);
-
-      const expected = cold('--b', { b: AuthorsActions.deleteAuthorFailure({ error }) });
+      actions = hot('-a', { a: action });
+      const response = cold('-#|', {}, error);
+      const expected = cold('--b', { b: outcome });
+      service.delete = jest.fn(() => response);
 
       expect(effects.deleteAuthor$).toBeObservable(expected);
     });
   });
-
 });
