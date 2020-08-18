@@ -37,6 +37,8 @@ describe('AppComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  // Used to call logout function to improve coverage,
+  // logout does nothing
   it('should call logout on toolbar event-logout', () => {
     const spy = jest.spyOn(component, 'logout');
 
@@ -48,24 +50,16 @@ describe('AppComponent', () => {
 
   describe('should toggle sidenavStatus on toolbar event-toggleSidenav', () => {
     it('to closed, assumed open on init', () => {
-      const spy = jest.spyOn(component, 'toggleSidenav');
-      const toolbar = de.query(By.css('bba-toolbar'));
+      component.toggleSidenav();
 
-      toolbar.triggerEventHandler('toggleSidenav', null);
-
-      expect(spy).toHaveBeenCalled();
       expect(component.sidenavStatus).toBe(SidenavStatus.CLOSED);
     });
 
     it('to open, set to closed on start', () => {
-      const spy = jest.spyOn(component, 'toggleSidenav');
-      const toolbar = de.query(By.css('bba-toolbar'));
-
       component.sidenavStatus = SidenavStatus.CLOSED;
 
-      toolbar.triggerEventHandler('toggleSidenav', null);
+      component.toggleSidenav();
 
-      expect(spy).toHaveBeenCalled();
       expect(component.sidenavStatus).toBe(SidenavStatus.OPENED);
     });
   });
