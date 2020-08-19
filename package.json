@@ -62,7 +62,8 @@
     "ngx-highlightjs": "^4.1.1",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~6.5.5",
-    "zone.js": "^0.10.2"
+    "zone.js": "^0.10.2",
+    "@capacitor/core": "^2.2.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1000.0",
@@ -93,6 +94,11 @@
     "ts-node": "~7.0.0",
     "tslint": "~6.0.0",
     "typescript": "~3.9.3",
-    "@ionic/angular-toolkit": "latest"
+    "@ionic/angular-toolkit": "latest",
+    "@nxtend/capacitor": "*",
+    "@capacitor/cli": "^2.2.1",
+    "@capacitor/android": "^2.2.1",
+    "@capacitor/electron": "^2.2.1",
+    "@capacitor/ios": "^2.2.1"
   }
 }
