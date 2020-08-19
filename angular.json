@@ -591,6 +591,28 @@
           }
         }
       }
+    },
+    "mobile-cap": {
+      "projectType": "application",
+      "root": "apps/mobile-cap",
+      "sourceRoot": "apps/mobile-cap/src",
+      "architect": {
+        "add": {
+          "builder": "@nxtend/capacitor:add"
+        },
+        "copy": {
+          "builder": "@nxtend/capacitor:copy"
+        },
+        "open": {
+          "builder": "@nxtend/capacitor:open"
+        },
+        "sync": {
+          "builder": "@nxtend/capacitor:sync"
+        },
+        "update": {
+          "builder": "@nxtend/capacitor:update"
+        }
+      }
     }
   },
   "cli": {

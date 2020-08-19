@@ -59,6 +59,7 @@
     "@ngrx/router-store": "9.1.0",
     "@ngrx/store": "^10.0.0",
     "@nrwl/angular": "10.0.11",
+    "@nxtend/capacitor": "^1.0.0",
     "cordova-plugin-ionic": "5.4.7",
     "cordova-plugin-whitelist": "^1.3.4",
     "file-saver": "^2.0.2",
@@ -101,6 +102,10 @@
     "ts-jest": "25.2.1",
     "ts-node": "~7.0.0",
     "tslint": "~6.0.0",
-    "typescript": "~3.9.3"
+    "typescript": "~3.9.3",
+    "@nxtend/capacitor": "*",
+    "@capacitor/android": "^2.2.1",
+    "@capacitor/electron": "^2.2.1",
+    "@capacitor/ios": "^2.2.1"
   }
 }
