@@ -9,6 +9,7 @@
 node_modules/
 
 # platforms
+.gradle/
 android/
 ios/
 
@@ -29,7 +30,6 @@ ios/
 !.vscode/extensions.json
 
 # misc
-/.gradle
 /.sass-cache
 /connect.lock
 /coverage
