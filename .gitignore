@@ -8,6 +8,10 @@
 # dependencies
 node_modules/
 
+# platforms
+android/
+ios/
+
 # IDEs and editors
 /.idea
 .project
