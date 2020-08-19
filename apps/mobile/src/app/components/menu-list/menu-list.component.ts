@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'bba-menu-list',
@@ -7,4 +7,6 @@ import { Component, Input } from '@angular/core';
 })
 export class MenuListComponent {
   @Input() pages;
+  @Input() dark;
+  @Output() darkChange = new EventEmitter();
 }

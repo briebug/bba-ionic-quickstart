@@ -1,9 +1,9 @@
-<ion-app>
+<ion-app [class.dark-theme]="dark">
   <ion-split-pane contentId="main-content">
     <ion-menu contentId="main-content" type="overlay" lines="none">
       <ion-content>
         <bba-menu-header></bba-menu-header>
-        <bba-menu-list [pages]="pages"></bba-menu-list>
+        <bba-menu-list [(dark)]="dark" [pages]="pages"></bba-menu-list>
       </ion-content>
     </ion-menu>
 
