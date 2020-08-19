@@ -10,6 +10,28 @@ import { Platform } from '@ionic/angular';
 })
 export class AppComponent {
   public dark = false;
+  public pages = [
+    {
+      title: 'Home',
+      url: '/home',
+      icon: 'home',
+    },
+    {
+      title: 'Courses',
+      url: '/courses',
+      icon: 'rocket',
+    },
+    {
+      title: 'Lessons',
+      url: '/lessons',
+      icon: 'paper-plane',
+    },
+    {
+      title: 'Authors',
+      url: '/authors',
+      icon: 'people',
+    },
+  ];
 
   constructor(
     private platform: Platform,
