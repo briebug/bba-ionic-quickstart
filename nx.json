@@ -17,12 +17,7 @@
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "cacheableOperations": [
-          "build",
-          "lint",
-          "test",
-          "e2e"
-        ]
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
       }
     }
   },
@@ -32,9 +27,7 @@
     },
     "dashboard-e2e": {
       "tags": [],
-      "implicitDependencies": [
-        "dashboard"
-      ]
+      "implicitDependencies": ["dashboard"]
     },
     "api": {
       "tags": []
@@ -56,6 +49,13 @@
     },
     "ui-toolbar": {
       "tags": []
+    },
+    "mobile": {
+      "tags": []
+    },
+    "mobile-e2e": {
+      "tags": [],
+      "implicitDependencies": ["mobile"]
     }
   }
 }

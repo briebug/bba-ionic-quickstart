@@ -28,7 +28,8 @@
     "help": "nx help",
     "serve:web": "ng serve --open",
     "serve:api": "json-server server/db.json",
-    "serve:all": "concurrently \"npm run serve:api\" \"npm run serve:web\""
+    "serve:mobile": "ionic serve --project=mobile",
+    "serve:all": "concurrently \"npm run serve:api\" \"npm run serve:web\" \"npm run serve:mobile\""
   },
   "private": true,
   "dependencies": {
@@ -43,6 +44,7 @@
     "@angular/platform-browser": "^10.0.0",
     "@angular/platform-browser-dynamic": "^10.0.0",
     "@angular/router": "^10.0.0",
+    "@ionic/angular": "^5.3.1",
     "@nestjs/common": "^7.0.0",
     "@nestjs/core": "^7.0.0",
     "@nestjs/platform-express": "^7.0.0",
@@ -90,6 +92,7 @@
     "ts-jest": "25.2.1",
     "ts-node": "~7.0.0",
     "tslint": "~6.0.0",
-    "typescript": "~3.9.3"
+    "typescript": "~3.9.3",
+    "@ionic/angular-toolkit": "latest"
   }
 }
