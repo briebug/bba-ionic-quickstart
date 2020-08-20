@@ -1,9 +1,22 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>home</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Home</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content fullscreen="true">
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12" size-md="6">
+        <bba-user-course-card [user]="user$ | async"></bba-user-course-card>
+      </ion-col>
 
+      <ion-col size="12" size-md="6">
+        <bba-user-card [user]="user$ | async"></bba-user-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

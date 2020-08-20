@@ -1,3 +1,43 @@
-<p>
-  user-course-card works!
-</p>
+<ion-card class="course-card" *ngIf="user">
+  <img [src]="user.currentCourse.thumbnail" />
+
+  <ion-card-header>
+    <ion-item detail="false" lines="none" class="course-item">
+      <ion-label>
+        <h1>{{user.currentCourse.title}}</h1>
+        <p>{{user.currentCourse.description}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-card-header>
+
+  <ion-card-content>
+    <ion-item detail="false">
+      <ion-label>
+        <h2>Current Lesson</h2>
+      </ion-label>
+    </ion-item>
+
+    <ion-list>
+      <ion-item detail="false" lines="none">
+        <ion-label>
+          <h3>{{user.currentLesson.title}}</h3>
+          <p>{{user.currentLesson.description}}</p>
+        </ion-label>
+        <ion-button
+          [routerLink]="['/courses/', user.currentLesson.courseId, 'lessons', user.currentLesson.id]">
+          Watch
+          <ion-icon slot="end" name="play"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </ion-list>
+
+    <ion-item lines="none">
+      <ion-button
+        expand="bock"
+        fill="outline"
+        [routerLink]="['/courses/', user.currentLesson.courseId]">
+        Go To Course
+      </ion-button>
+    </ion-item>
+  </ion-card-content>
+</ion-card>
