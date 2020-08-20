@@ -8,6 +8,11 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <pre>{{ authors$ | async | json }}</pre>
+<ion-content fullscreen="true">
+  <ion-list>
+    <bba-author-courses-list
+      *ngFor="let author of authors$ | async"
+      [author]="author">
+    </bba-author-courses-list>
+  </ion-list>
 </ion-content>

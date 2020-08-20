@@ -8,6 +8,11 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <pre>{{ courses$ | async | json }}</pre>
+<ion-content fullscreen="true">
+  <ion-list>
+    <bba-course-lessons-list
+      *ngFor="let course of courses$ | async"
+      [course]="course">
+    </bba-course-lessons-list>
+  </ion-list>
 </ion-content>
