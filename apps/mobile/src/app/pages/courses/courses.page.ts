@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { CoursesFacade } from '@bba/core-state';
 
 @Component({
   selector: 'bba-courses',
   templateUrl: './courses.page.html',
   styleUrls: ['./courses.page.scss'],
 })
-export class CoursesPage implements OnInit {
+export class CoursesPage {
+  courses$ = this.coursesFacade.allCourses$;
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  constructor(private coursesFacade: CoursesFacade) { }
 }

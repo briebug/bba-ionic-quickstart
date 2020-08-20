@@ -1,15 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthorsFacade } from '@bba/core-state';
 
 @Component({
   selector: 'bba-authors',
   templateUrl: './authors.page.html',
   styleUrls: ['./authors.page.scss'],
 })
-export class AuthorsPage implements OnInit {
+export class AuthorsPage {
+  authors$ = this.authorsFacade.allAuthors$;
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  constructor(private authorsFacade: AuthorsFacade) {}
 }
