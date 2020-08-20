@@ -1,11 +1,9 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
-
+import { ComponentsModule } from '../../components/components.module';
 import { CoursesPageRoutingModule } from './courses-routing.module';
-
 import { CoursesPage } from './courses.page';
 
 @NgModule({
@@ -13,7 +11,8 @@ import { CoursesPage } from './courses.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    CoursesPageRoutingModule
+    CoursesPageRoutingModule,
+    ComponentsModule
   ],
   declarations: [CoursesPage]
 })
