@@ -1,15 +1,17 @@
-import { Component } from '@angular/core';
-import { AuthorsFacade, CoursesFacade, LessonsFacade, UsersFacade } from '@bba/core-state';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { Platform } from '@ionic/angular';
+import { Component, OnInit } from '@angular/core';
+import {
+  AuthorsFacade,
+  CoursesFacade,
+  LessonsFacade,
+  UsersFacade,
+} from '@bba/core-state';
 
 @Component({
   selector: 'bba-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   public dark = false;
   public pages = [
     {
@@ -35,23 +37,14 @@ export class AppComponent {
   ];
 
   constructor(
-    private platform: Platform,
-    private splashScreen: SplashScreen,
-    private statusBar: StatusBar,
     private authorsFacade: AuthorsFacade,
     private coursesFacade: CoursesFacade,
     private lessonsFacade: LessonsFacade,
     private usersFacade: UsersFacade
-  ) {
-    this.initializeApp();
-    this.loadData();
-  }
+  ) {}
 
-  initializeApp() {
-    this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
-      this.splashScreen.hide();
-    });
+  ngOnInit() {
+    this.loadData();
   }
 
   loadData() {
