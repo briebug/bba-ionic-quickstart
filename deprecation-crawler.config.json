@@ -91,7 +91,7 @@
   "outputDirectory": "./tmp/content/deprecations",
   "deprecationComment": "@deprecated",
   "deprecationLink": "https://rxjs.dev/deprecations",
-  "tsConfigPath": "src/tsconfig.base.json",
+  "tsConfigPath": "tsconfig.base.json",
   "tagFormat": "${SEMVER_TOKEN}",
   "commitMessage": "docs(deprecation-manager): sync deprecations",
   "commentLinkFormat": "Details: {@link ${COMMENT_LINK_URL_TOKEN}#${COMMENT_LINK_URL_PARAM_TOKEN}}"
