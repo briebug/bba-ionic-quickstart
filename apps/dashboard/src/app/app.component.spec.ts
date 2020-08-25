@@ -1,27 +1,66 @@
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { async, TestBed } from '@angular/core/testing';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterTestingModule } from '@angular/router/testing';
-import { MaterialModule } from '@bba/material';
+import { DebugElement } from '@angular/core';
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
+import { HttpClientModule } from '@angular/common/http';
+import { AppComponent, SidenavStatus } from './app.component';
 import { UiToolbarModule } from '@bba/ui-toolbar';
-import { AppComponent } from './app.component';
+import { MaterialModule } from '@bba/material';
+import { RouterTestingModule } from '@angular/router/testing';
+import { By } from '@angular/platform-browser';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('AppComponent', () => {
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+  let de: DebugElement;
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [AppComponent],
       imports: [
+        HttpClientTestingModule,
         UiToolbarModule,
         MaterialModule,
-        NoopAnimationsModule,
         RouterTestingModule,
+        NoopAnimationsModule,
       ],
     }).compileComponents();
   }));
 
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    de = fixture.debugElement;
+    component = fixture.componentInstance;
+  });
+
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
+    expect(component).toBeTruthy();
+  });
+
+  // Used to call logout function to improve coverage,
+  // logout does nothing
+  it('should call logout on toolbar event-logout', () => {
+    const spy = jest.spyOn(component, 'logout');
+
+    const toolbar = de.query(By.css('bba-toolbar'));
+    toolbar.triggerEventHandler('logout', null);
+
+    expect(spy).toHaveBeenCalled();
+  });
+
+  describe('should toggle sidenavStatus on toolbar event-toggleSidenav', () => {
+    it('to closed, assumed open on init', () => {
+      component.toggleSidenav();
+
+      expect(component.sidenavStatus).toBe(SidenavStatus.CLOSED);
+    });
+
+    it('to open, set to closed on start', () => {
+      component.sidenavStatus = SidenavStatus.CLOSED;
+
+      component.toggleSidenav();
+
+      expect(component.sidenavStatus).toBe(SidenavStatus.OPENED);
+    });
   });
 });

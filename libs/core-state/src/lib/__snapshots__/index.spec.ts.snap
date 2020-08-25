@@ -1,0 +1,268 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Index Common Selector should select the navigated course 1`] = `
+Object {
+  "authorId": "0",
+  "description": "mockCourse constant for testing",
+  "id": "0",
+  "thumbnail": "",
+  "title": "mockCourse",
+}
+`;
+
+exports[`Index Common Selector should select the navigated lesson 1`] = `
+Object {
+  "courseId": "0",
+  "description": "mockLesson constant for testing",
+  "id": "0",
+  "title": "mockLesson",
+  "videoUri": "",
+}
+`;
+
+exports[`Index Common Selector should select the related authors and lessons on Courses 1`] = `
+Array [
+  Object {
+    "author": Object {
+      "description": "mockAuthor constant for testing",
+      "firstName": "Mock",
+      "id": "0",
+      "lastName": "Author",
+      "profilePic": "",
+      "title": "mockAuthor",
+    },
+    "authorId": "0",
+    "description": "mockCourse constant for testing",
+    "id": "0",
+    "lessons": Array [
+      Object {
+        "courseId": "0",
+        "description": "mockLesson constant for testing",
+        "id": "0",
+        "title": "mockLesson",
+        "videoUri": "",
+      },
+      Object {
+        "courseId": "0",
+        "description": "mockLesson constant for testing",
+        "id": "1",
+        "title": "mockLesson",
+        "videoUri": "",
+      },
+      Object {
+        "courseId": "0",
+        "description": "mockLesson constant for testing",
+        "id": "2",
+        "title": "mockLesson",
+        "videoUri": "",
+      },
+    ],
+    "thumbnail": "",
+    "title": "mockCourse",
+  },
+  Object {
+    "author": Object {
+      "description": "mockAuthor constant for testing",
+      "firstName": "Mock",
+      "id": "0",
+      "lastName": "Author",
+      "profilePic": "",
+      "title": "mockAuthor",
+    },
+    "authorId": "0",
+    "description": "mockCourse constant for testing",
+    "id": "1",
+    "lessons": Array [],
+    "thumbnail": "",
+    "title": "mockCourse",
+  },
+  Object {
+    "author": Object {
+      "description": "mockAuthor constant for testing",
+      "firstName": "Mock",
+      "id": "0",
+      "lastName": "Author",
+      "profilePic": "",
+      "title": "mockAuthor",
+    },
+    "authorId": "0",
+    "description": "mockCourse constant for testing",
+    "id": "2",
+    "lessons": Array [],
+    "thumbnail": "",
+    "title": "mockCourse",
+  },
+]
+`;
+
+exports[`Index Common Selector should select the related courses and lessons on Users 1`] = `
+Array [
+  Object {
+    "coursesCompleted": 1,
+    "currentCourse": Object {
+      "authorId": "0",
+      "description": "mockCourse constant for testing",
+      "id": "0",
+      "thumbnail": "",
+      "title": "mockCourse",
+    },
+    "currentLesson": Object {
+      "courseId": "0",
+      "description": "mockLesson constant for testing",
+      "id": "1",
+      "title": "mockLesson",
+      "videoUri": "",
+    },
+    "currentLessonId": "1",
+    "description": "mockUser constant for testing",
+    "email": "mockUser@mock.com",
+    "firstName": "Mock",
+    "id": "0",
+    "lastName": "User",
+    "lessonsCompleted": 1,
+    "password": "12345",
+    "profilePic": "",
+    "title": "mockUser",
+  },
+  Object {
+    "coursesCompleted": 1,
+    "currentCourse": Object {
+      "authorId": "0",
+      "description": "mockCourse constant for testing",
+      "id": "0",
+      "thumbnail": "",
+      "title": "mockCourse",
+    },
+    "currentLesson": Object {
+      "courseId": "0",
+      "description": "mockLesson constant for testing",
+      "id": "1",
+      "title": "mockLesson",
+      "videoUri": "",
+    },
+    "currentLessonId": "1",
+    "description": "mockUser constant for testing",
+    "email": "mockUser@mock.com",
+    "firstName": "Mock",
+    "id": "1",
+    "lastName": "User",
+    "lessonsCompleted": 1,
+    "password": "12345",
+    "profilePic": "",
+    "title": "mockUser",
+  },
+  Object {
+    "coursesCompleted": 1,
+    "currentCourse": Object {
+      "authorId": "0",
+      "description": "mockCourse constant for testing",
+      "id": "0",
+      "thumbnail": "",
+      "title": "mockCourse",
+    },
+    "currentLesson": Object {
+      "courseId": "0",
+      "description": "mockLesson constant for testing",
+      "id": "1",
+      "title": "mockLesson",
+      "videoUri": "",
+    },
+    "currentLessonId": "1",
+    "description": "mockUser constant for testing",
+    "email": "mockUser@mock.com",
+    "firstName": "Mock",
+    "id": "2",
+    "lastName": "User",
+    "lessonsCompleted": 1,
+    "password": "12345",
+    "profilePic": "",
+    "title": "mockUser",
+  },
+]
+`;
+
+exports[`Index Common Selector should select the related courses and lessons on selected user on no selected user 1`] = `undefined`;
+
+exports[`Index Common Selector should select the related courses and lessons on selected user on selected user 1`] = `
+Object {
+  "coursesCompleted": 1,
+  "currentCourse": Object {
+    "authorId": "0",
+    "description": "mockCourse constant for testing",
+    "id": "0",
+    "thumbnail": "",
+    "title": "mockCourse",
+  },
+  "currentLesson": Object {
+    "courseId": "0",
+    "description": "mockLesson constant for testing",
+    "id": "1",
+    "title": "mockLesson",
+    "videoUri": "",
+  },
+  "currentLessonId": "1",
+  "description": "mockUser constant for testing",
+  "email": "mockUser@mock.com",
+  "firstName": "Mock",
+  "id": "0",
+  "lastName": "User",
+  "lessonsCompleted": 1,
+  "password": "12345",
+  "profilePic": "",
+  "title": "mockUser",
+}
+`;
+
+exports[`Index Common Selector should select the related courses on Authors 1`] = `
+Array [
+  Object {
+    "courses": Array [
+      Object {
+        "authorId": "0",
+        "description": "mockCourse constant for testing",
+        "id": "0",
+        "thumbnail": "",
+        "title": "mockCourse",
+      },
+      Object {
+        "authorId": "0",
+        "description": "mockCourse constant for testing",
+        "id": "1",
+        "thumbnail": "",
+        "title": "mockCourse",
+      },
+      Object {
+        "authorId": "0",
+        "description": "mockCourse constant for testing",
+        "id": "2",
+        "thumbnail": "",
+        "title": "mockCourse",
+      },
+    ],
+    "description": "mockAuthor constant for testing",
+    "firstName": "Mock",
+    "id": "0",
+    "lastName": "Author",
+    "profilePic": "",
+    "title": "mockAuthor",
+  },
+  Object {
+    "courses": Array [],
+    "description": "mockAuthor constant for testing",
+    "firstName": "Mock",
+    "id": "1",
+    "lastName": "Author",
+    "profilePic": "",
+    "title": "mockAuthor",
+  },
+  Object {
+    "courses": Array [],
+    "description": "mockAuthor constant for testing",
+    "firstName": "Mock",
+    "id": "2",
+    "lastName": "Author",
+    "profilePic": "",
+    "title": "mockAuthor",
+  },
+]
+`;

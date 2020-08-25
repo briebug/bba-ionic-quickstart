@@ -1,29 +1,26 @@
-import { AuthorsEntity } from './authors.models';
-import { State, authorsAdapter, initialState } from './authors.reducer';
-import * as AuthorsSelectors from './authors.selectors';
+import { AuthorsState, authorsAdapter, initialAuthorsState } from "./authors.reducer";
+import * as AuthorsSelectors from "./authors.selectors";
+import { Author } from "@bba/api-interfaces";
+import { mockAuthor } from "@bba/testing";
 
-describe('Authors Selectors', () => {
-  const ERROR_MSG = 'No Error Available';
-  const getAuthorsId = (it) => it['id'];
-  const createAuthorsEntity = (id: string, name = '') =>
-    ({
-      id,
-      name: name || `name-${id}`,
-    } as AuthorsEntity);
+describe("Authors Selectors", () => {
+  const ERROR_MSG = "No Error Available";
+  const getAuthorsId = (it) => it["id"];
+  const createAuthor = (id: string, name = "") => ({ ...mockAuthor, id: id } as Author);
 
   let state;
 
   beforeEach(() => {
     state = {
-      authors: authorsAdapter.addAll(
+      authors: authorsAdapter.setAll(
         [
-          createAuthorsEntity('PRODUCT-AAA'),
-          createAuthorsEntity('PRODUCT-BBB'),
-          createAuthorsEntity('PRODUCT-CCC'),
+          createAuthor("PRODUCT-AAA"),
+          createAuthor("PRODUCT-BBB"),
+          createAuthor("PRODUCT-CCC"),
         ],
         {
-          ...initialState,
-          selectedId: 'PRODUCT-BBB',
+          ...initialAuthorsState,
+          selectedId: "PRODUCT-BBB",
           error: ERROR_MSG,
           loaded: true,
         }
@@ -31,20 +28,20 @@ describe('Authors Selectors', () => {
     };
   });
 
-  describe('Authors Selectors', () => {
-    it('getAllAuthors() should return the list of Authors', () => {
+  describe("Authors Selectors", () => {
+    it("getAllAuthors() should return the list of Authors", () => {
       const results = AuthorsSelectors.getAllAuthors(state);
       const selId = getAuthorsId(results[1]);
 
       expect(results.length).toBe(3);
-      expect(selId).toBe('PRODUCT-BBB');
+      expect(selId).toBe("PRODUCT-BBB");
     });
 
-    it('getSelected() should return the selected Entity', () => {
-      const result = AuthorsSelectors.getSelected(state);
+    it("getSelected() should return the selected Entity", () => {
+      const result = AuthorsSelectors.getSelectedAuthor(state);
       const selId = getAuthorsId(result);
 
-      expect(selId).toBe('PRODUCT-BBB');
+      expect(selId).toBe("PRODUCT-BBB");
     });
 
     it("getAuthorsLoaded() should return the current 'loaded' status", () => {

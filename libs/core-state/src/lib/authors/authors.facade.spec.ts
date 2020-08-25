@@ -1,118 +1,105 @@
-import { NgModule } from '@angular/core';
-import { TestBed } from '@angular/core/testing';
-import { readFirst } from '@nrwl/angular/testing';
+import { TestBed } from "@angular/core/testing";
+import { ActionsSubject } from "@ngrx/store";
 
-import { EffectsModule } from '@ngrx/effects';
-import { StoreModule, Store } from '@ngrx/store';
+import { AuthorsFacade } from "./authors.facade";
+import * as AuthorsActions from "./authors.actions";
+import { initialAuthorsState } from "./authors.reducer";
+import { mockAuthor } from "@bba/testing";
+import { MockStore, provideMockStore } from "@ngrx/store/testing";
 
-import { NxModule } from '@nrwl/angular';
-
-import { AuthorsEntity } from './authors.models';
-import { AuthorsEffects } from './authors.effects';
-import { AuthorsFacade } from './authors.facade';
-
-import * as AuthorsSelectors from './authors.selectors';
-import * as AuthorsActions from './authors.actions';
-import {
-  AUTHORS_FEATURE_KEY,
-  State,
-  initialState,
-  reducer,
-} from './authors.reducer';
-
-interface TestSchema {
-  authors: State;
-}
-
-describe('AuthorsFacade', () => {
+describe("AuthorsFacade", () => {
   let facade: AuthorsFacade;
-  let store: Store<TestSchema>;
-  const createAuthorsEntity = (id: string, name = '') =>
-    ({
-      id,
-      name: name || `name-${id}`,
-    } as AuthorsEntity);
+  let actionSubject;
+  const mockActionsSubject = new ActionsSubject();
+  let store: MockStore;
 
-  beforeEach(() => {});
-
-  describe('used in NgModule', () => {
-    beforeEach(() => {
-      @NgModule({
-        imports: [
-          StoreModule.forFeature(AUTHORS_FEATURE_KEY, reducer),
-          EffectsModule.forFeature([AuthorsEffects]),
-        ],
-        providers: [AuthorsFacade],
-      })
-      class CustomFeatureModule {}
-
-      @NgModule({
-        imports: [
-          NxModule.forRoot(),
-          StoreModule.forRoot({}),
-          EffectsModule.forRoot([]),
-          CustomFeatureModule,
-        ],
-      })
-      class RootModule {}
-      TestBed.configureTestingModule({ imports: [RootModule] });
-
-      store = TestBed.get(Store);
-      facade = TestBed.get(AuthorsFacade);
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [
+        AuthorsFacade,
+        provideMockStore({ initialState: initialAuthorsState }),
+        { provide: ActionsSubject, useValue: mockActionsSubject },
+      ],
     });
 
-    /**
-     * The initially generated facade::loadAll() returns empty array
-     */
-    it('loadAll() should return empty list with loaded == true', async (done) => {
-      try {
-        let list = await readFirst(facade.allAuthors$);
-        let isLoaded = await readFirst(facade.loaded$);
+    facade = TestBed.inject(AuthorsFacade);
+    actionSubject = TestBed.inject(ActionsSubject);
+    store = TestBed.inject(MockStore);
+  });
 
-        expect(list.length).toBe(0);
-        expect(isLoaded).toBe(false);
+  it("should be created", () => {
+    expect(facade).toBeTruthy();
+  });
 
-        facade.dispatch(AuthorsActions.loadAuthors());
+  it("should have mutations", (done) => {
+    const action = AuthorsActions.createAuthor({ author: mockAuthor });
+    actionSubject.next(action);
 
-        list = await readFirst(facade.allAuthors$);
-        isLoaded = await readFirst(facade.loaded$);
+    facade.mutations$.subscribe((result) => {
+      expect(result).toBe(action);
+      done();
+    });
+  });
 
-        expect(list.length).toBe(0);
-        expect(isLoaded).toBe(true);
+  describe("should dispatch", () => {
+    it("select on select(author.id)", () => {
+      const spy = jest.spyOn(store, "dispatch");
 
-        done();
-      } catch (err) {
-        done.fail(err);
-      }
+      facade.selectAuthor(mockAuthor.id);
+
+      const action = AuthorsActions.selectAuthor({ selectedId: mockAuthor.id });
+
+      expect(spy).toHaveBeenCalledWith(action);
     });
 
-    /**
-     * Use `loadAuthorsSuccess` to manually update list
-     */
-    it('allAuthors$ should return the loaded list; and loaded flag == true', async (done) => {
-      try {
-        let list = await readFirst(facade.allAuthors$);
-        let isLoaded = await readFirst(facade.loaded$);
+    it("loadAuthors on loadAuthors()", () => {
+      const spy = jest.spyOn(store, "dispatch");
 
-        expect(list.length).toBe(0);
-        expect(isLoaded).toBe(false);
+      facade.loadAuthors();
 
-        facade.dispatch(
-          AuthorsActions.loadAuthorsSuccess({
-            authors: [createAuthorsEntity('AAA'), createAuthorsEntity('BBB')],
-          })
-        );
+      const action = AuthorsActions.loadAuthors();
 
-        list = await readFirst(facade.allAuthors$);
-        isLoaded = await readFirst(facade.loaded$);
+      expect(spy).toHaveBeenCalledWith(action);
+    });
 
-        expect(list.length).toBe(2);
-        expect(isLoaded).toBe(true);
+    it("loadAuthor on loadAuthor(author.id)", () => {
+      const spy = jest.spyOn(store, "dispatch");
 
-        done();
-      } catch (err) {
-        done.fail(err);
-      }
+      facade.loadAuthor(mockAuthor.id);
+
+      const action = AuthorsActions.loadAuthor({ authorId: mockAuthor.id });
+
+      expect(spy).toHaveBeenCalledWith(action);
+    });
+
+    it("createAuthor on createAuthor(author)", () => {
+      const spy = jest.spyOn(store, "dispatch");
+
+      facade.createAuthor(mockAuthor);
+
+      const action = AuthorsActions.createAuthor({ author: mockAuthor });
+
+      expect(spy).toHaveBeenCalledWith(action);
+    });
+
+    it("updateAuthor on updateAuthor(author)", () => {
+      const spy = jest.spyOn(store, "dispatch");
+
+      facade.updateAuthor(mockAuthor);
+
+      const action = AuthorsActions.updateAuthor({ author: mockAuthor });
+
+      expect(spy).toHaveBeenCalledWith(action);
+    });
+
+    it("delete on delete(model)", () => {
+      const spy = jest.spyOn(store, "dispatch");
+
+      facade.deleteAuthor(mockAuthor);
+
+      const action = AuthorsActions.deleteAuthor({ author: mockAuthor });
+
+      expect(spy).toHaveBeenCalledWith(action);
     });
   });
 });
