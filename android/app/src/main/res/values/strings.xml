@@ -1,7 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<resources>
-    <string name="app_name">bba-ionic-quickstart</string>
-    <string name="title_activity_main">bba-ionic-quickstart</string>
-    <string name="package_name">academy.briebug.app</string>
-    <string name="custom_url_scheme">academy.briebug.app</string>
-</resources>

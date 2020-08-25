@@ -8,6 +8,11 @@
 # dependencies
 node_modules/
 
+# platforms
+.gradle/
+android/
+ios/
+
 # IDEs and editors
 /.idea
 .project
@@ -25,7 +30,6 @@ node_modules/
 !.vscode/extensions.json
 
 # misc
-/.gradle
 /.sass-cache
 /connect.lock
 /coverage
