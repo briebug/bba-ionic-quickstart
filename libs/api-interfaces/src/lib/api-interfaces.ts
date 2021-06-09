@@ -3,6 +3,10 @@ export interface BaseEntity {
   title?: string | null;
 }
 
+export interface Message {
+  message: string;
+}
+
 export interface Login {
   email: string;
   password: string;
